@@ -1,0 +1,86 @@
+How to create a container
+
+sudo lxc-create -n mydb -t debian
+
+-n: name
+-t: type
+
+To check the available types:
+
+[0 [10:45][leo@~]$ ls -1 /usr/share/lxc/templates/
+lxc-alpine
+lxc-altlinux
+lxc-archlinux
+lxc-busybox
+lxc-centos
+lxc-cirros
+lxc-debian
+lxc-download
+lxc-fedora
+lxc-fedora-legacy
+lxc-gentoo
+lxc-local
+lxc-oci
+lxc-openmandriva
+lxc-opensuse
+lxc-oracle
+lxc-plamo
+lxc-pld
+lxc-sabayon
+lxc-slackware
+lxc-sparclinux
+lxc-sshd
+lxc-ubuntu
+lxc-ubuntu-cloud
+lxc-voidlinux
+[0 [10:45][leo@~]$
+
+How to copy a container using an existing container:
+sudo lxc-copy -n kaka -N dnsmasq
+
+How to start a container:
+sudo lxc-start -n mydb -d
+-d: daemon
+
+How to stop a container:
+sudo lxc-stop -n kaka
+
+How to ssh to a container:
+sudo lxc-console -n kaka
+
+How to list the active containers:
+sudo lxc-ls --active
+
+[0 [10:49][leo@~]$ sudo lxc-ls
+centos1  centos2  centos3  dnsmasq  ubuntu-c ubuntu1  ubuntu2  ubuntu3  
+[0 [10:49][leo@~]$
+
+# Start all the containers
+for container in $(sudo lxc-ls); do
+    sudo lxc-start -n "${container}"
+done
+
+# Check IP of a container:
+for container in $(sudo lxc-ls); do
+    echo "${container}"
+    sudo lxc-info -n "${container}" | grep -F IP
+done
+
+Ansible uses these locations (by priority)
+
+1) ANSIBLE_CONFIG env variable
+2) ./ansible.cfg
+3) ~/.ansible.cfg
+4) /etc/ansible/ansible.cfg     (default Ubuntu installation)
+
+[0 [11:28][leo@ansible]$ cp -v /etc/ansible/ansible.cfg .
+'/etc/ansible/ansible.cfg' -> './ansible.cfg'
+[0 [11:29][leo@ansible]$ ansible --version
+ansible 2.6.5
+  config file = /home/leo/workspace/ansible-code/ansible/ansible.cfg
+  configured module search path = [u'/home/leo/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.15+ (default, Oct  2 2018, 22:12:08) [GCC 8.2.0]
+[0 [11:29][leo@ansible]$
+
