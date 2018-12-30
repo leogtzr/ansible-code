@@ -1,9 +1,19 @@
-[all]
+; [all]
+; centos1
+; centos2
+; centos3
+; dnsmasq
+; ubuntu-c
+; ubuntu1
+; ubuntu2
+; ubuntu3
+
+[centos]
 centos1
 centos2
 centos3
-dnsmasq
-ubuntu-c
+
+[ubuntu]
 ubuntu1
 ubuntu2
 ubuntu3
