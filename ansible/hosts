@@ -20,3 +20,7 @@ ubuntu3
 
 [frijoles]
 frijol ansible_user=root
+
+; To use a specific password we can use the following options
+; [group]
+; host ansible_become=true ansible_become_pass=PASSWORD
