@@ -18,3 +18,5 @@ ubuntu1
 ubuntu2
 ubuntu3
 
+[frijoles]
+frijol ansible_user=root

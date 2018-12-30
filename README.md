@@ -52,3 +52,12 @@ ubuntu3
     centos3
 [0 [13:01][leo@ansible]$ 
 ```
+
+```
+[0 [13:03][leo@ansible]$ ansible '~^u.*$' --list-hosts
+  hosts (3):
+    ubuntu1
+    ubuntu2
+    ubuntu3
+[0 [13:03][leo@ansible]$ 
+```
